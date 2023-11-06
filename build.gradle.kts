@@ -43,5 +43,12 @@ plugins {
     alias(libs.plugins.secrets) apply false
     id("io.github.cdsap.kotlinprocess") version "0.1.5"
     id("io.github.cdsap.gradleprocess") version "0.1.0"
+ id("org.gradle.android.cache-fix") version "3.0" apply false
+}
+
+subprojects {
+    plugins.withType<com.android.build.gradle.api.AndroidBasePlugin>() {
+        apply(plugin = "org.gradle.android.cache-fix")
+    }
 }
 
